@@ -282,7 +282,7 @@ declare %private function router:execute-handler ($base-request as map(*), $use,
 
             let $fn := $lookup($base-request?config?operationId)
             let $handler-response :=
-                if (empty($fn)) then (
+                if (empty($fn) or not($fn instance of function(*))) then (
                     error($errors:OPERATION, 'Operation not found for operationId:"' || $base-request?config?operationId || '"', $base-request?config)
                 ) else (
                     $fn($request)
