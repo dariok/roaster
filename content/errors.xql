@@ -44,7 +44,7 @@ declare function errors:get-status-code-from-error($error as xs:QName) as xs:int
     switch($error)
         case $errors:REQUIRED_PARAM (: fall-through :)
         case $errors:BAD_REQUEST (: fall-through :)
-        case $errors:BODY_CONTENT_TYPE return 400
+        case $errors:BODY_CONTENT_TYPE return 415
 
         case $errors:UNAUTHORIZED return 401
         case $errors:FORBIDDEN return 403
